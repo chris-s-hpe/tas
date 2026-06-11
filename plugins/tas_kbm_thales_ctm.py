@@ -374,7 +374,7 @@ class _CTMKBMClient:
                     )
 
                 try:
-                    logger.debug(f"Attempting to acquire lock for key f{key_id}")
+                    logger.debug(f"Attempting to acquire lock for key {key_id}")
                     # Acquire lock
                     if not lock.acquire():
                         raise Exception(
