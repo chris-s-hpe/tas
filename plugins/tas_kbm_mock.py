@@ -153,7 +153,7 @@ def _secrets_map_from_config(cfg: Dict[str, Any]) -> Dict[str, bytes]:
     return out
 
 
-def kbm_open_client_connection(config_file: str = None):
+def kbm_open_client_connection(config_file: str = None, redis_client: Optional[Any] = None):
     """
     Initialize the mock KBM client.
 
@@ -162,6 +162,10 @@ def kbm_open_client_connection(config_file: str = None):
       secrets:             # key_id -> plaintext secret (used as-is, no derivation)
         my-key-1: "plain-text-secret"
         my-key-2: "ffeeddccbbaa"   # kept as the exact string content, not decoded
+
+    Args:
+        config_file: Path to YAML/JSON config file
+        redis_client: Optional Redis client (ignored for mock implementation)
     """
     logger.info("Initializing mock KBM client connection")
     cfg = _load_config_file(config_file)
