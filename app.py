@@ -285,6 +285,8 @@ try:
     logger.info("KBM client connection established successfully")
     app.extensions["kbm_client"] = kbm_client
     app.extensions["kbm_get_secret"] = kbm_get_secret
+    redis_client=app.extensions.get("redis_ephemeral")
+    or app.extensions.get("redis"),
 except Exception as e:
     logger.error(f"Failed to initialize KBM client: {e}")
     raise RuntimeError(f"Failed to open KBM client connection: {e}")
